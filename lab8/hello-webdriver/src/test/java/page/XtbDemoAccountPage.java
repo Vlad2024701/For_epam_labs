@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static waits.ExpicitWaiter.waitForElementLocatedBy;
+
 public class XtbDemoAccountPage {
 
     private WebDriver driver;
@@ -34,15 +36,13 @@ public class XtbDemoAccountPage {
     }
 
     public XtbDemoAccountPage pressTabMarketAnalysis(){
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.presenceOfElementLocated(By.
-                xpath("//*[text()='Анализ рынка']/parent::li")));
+        waitForElementLocatedBy(driver, By.xpath("//*[text()='Анализ рынка']/parent::li"));
         TabMarketAnalysis.click();
         return this;
     }
 
     public XtbDemoAccountPage inputValueOfMarketCapitalizationMax(String text){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.
-                xpath("//*[@class='xs-slider-range-values-box']/span[2]")));
+        waitForElementLocatedBy(driver,By.xpath("//*[@class='xs-slider-range-values-box']/span[2]"));
         ValueOfMarketCapitalizationMax.click();
         areaValueOfMarketCapitalizationMax.clear();
         areaValueOfMarketCapitalizationMax.sendKeys(text);
@@ -51,6 +51,7 @@ public class XtbDemoAccountPage {
     }
 
     public XtbDemoAccountPage inputValueOfDevidentAbilityMin(String text){
+        waitForElementLocatedBy(driver,By.xpath("//div[@label='SCREENER.DIVIDED_YIELD']//span[@class='xs-slider-range-min']"));
         ValueOfDevidentAbilityMin.click();
         areaValueOfDevidentAbilityMin.clear();
         areaValueOfDevidentAbilityMin.sendKeys(text);
@@ -59,13 +60,13 @@ public class XtbDemoAccountPage {
     }
 
     public XtbDemoAccountPage sortValueByDevidendYield(){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.
-                xpath("//span[text()='ДИВИДЕНДНАЯ ДОХОДНОСТЬ']/parent::div")));
+        waitForElementLocatedBy(driver, By.xpath("//span[text()='ДИВИДЕНДНАЯ ДОХОДНОСТЬ']/parent::div"));
         sortValueByDevidence.click();
         return this;
     }
 
     public float getFirstDevidendYiledAfterSort() {
+        waitForElementLocatedBy(driver, By.xpath("//div[@class='slick-cell l6 r6 slickgrid-cell-align-center']"));
         WebElement sortedDevidendYield = driver.findElement(By.
                 xpath("//div[@class='slick-cell l6 r6 slickgrid-cell-align-center']"));
         float devidendYieldValue = Float.parseFloat(sortedDevidendYield.getText().replace("%", ""));

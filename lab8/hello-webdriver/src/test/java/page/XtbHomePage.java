@@ -1,9 +1,16 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static waits.ExpicitWaiter.waitForElementLocatedBy;
 
 public class XtbHomePage {
 
@@ -26,11 +33,13 @@ public class XtbHomePage {
     }
 
     public XtbHomePage pressLogInButton(){
+        waitForElementLocatedBy(driver, By.xpath("//*[@class='js-login-aa']"));
         buttonLogin.click();
         return this;
     }
 
     public XtbLoginPage pressHowToLogInButton(){
+        waitForElementLocatedBy(driver,By.xpath("//*[@class = 'btn btn-block btn-shadow btn-green js-login-xs-5-aa']"));
         buttonChooseHowToLogIn.click();
         return new XtbLoginPage(driver);
     }

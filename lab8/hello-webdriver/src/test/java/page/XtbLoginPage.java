@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static waits.ExpicitWaiter.waitForElementLocatedBy;
+
 public class XtbLoginPage {
     private WebDriver driver;
 
@@ -26,18 +28,19 @@ public class XtbLoginPage {
     }
 
     public XtbLoginPage enterLogIn(String text){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.
-                xpath("//*[@name='xslogin']")));
+        waitForElementLocatedBy(driver,By.xpath("//*[@name='xslogin']"));
         enterLogInArea.sendKeys(text);
         return this;
     }
 
     public XtbLoginPage enterPassword(String text){
+        waitForElementLocatedBy(driver,By.xpath("//*[@name='xspass']"));
         enterPasswordArea.sendKeys(text);
         return this;
     }
 
     public XtbDemoAccountPage logInUnderDemoAccount(){
+        waitForElementLocatedBy(driver,By.xpath("//*[@class='xs-btn xs-btn-ok-login ng-scope']"));
         LogInButton.click();
         return new XtbDemoAccountPage(driver);
     }
