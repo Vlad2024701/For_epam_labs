@@ -43,6 +43,9 @@ public class XtbDemoAccountPage {
 
     public XtbDemoAccountPage inputValueOfMarketCapitalizationMax(String text){
         waitForElementLocatedBy(driver,By.xpath("//*[@class='xs-slider-range-values-box']/span[2]"));
+        new WebDriverWait(driver, Duration.ofSeconds(20))
+                .until(ExpectedConditions.elementToBeClickable(By.
+                        xpath("//*[@class='xs-slider-range-values-box']/span[2]")));
         ValueOfMarketCapitalizationMax.click();
         areaValueOfMarketCapitalizationMax.clear();
         areaValueOfMarketCapitalizationMax.sendKeys(text);
@@ -69,7 +72,6 @@ public class XtbDemoAccountPage {
         waitForElementLocatedBy(driver, By.xpath("//div[@class='slick-cell l6 r6 slickgrid-cell-align-center']"));
         WebElement sortedDevidendYield = driver.findElement(By.
                 xpath("//div[@class='slick-cell l6 r6 slickgrid-cell-align-center']"));
-        float devidendYieldValue = Float.parseFloat(sortedDevidendYield.getText().replace("%", ""));
-        return devidendYieldValue;
+        return Float.parseFloat(sortedDevidendYield.getText().replace("%", ""));
     }
 }
