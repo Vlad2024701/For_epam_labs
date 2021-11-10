@@ -23,12 +23,12 @@ public class WebDriverSeleniumTest {
     }
 
     @Test(description = "Test-case market analis")
-    public void testCase() throws InterruptedException {
+    public void testCase() {
         XtbLoginPage chooseHowToLogInSwitchToSecondWindowHandle = new XtbHomePage(driver)
                 .openPage()
                 .pressLogInButton()
                 .pressHowToLogInButton();
-        ArrayList<String> getBrowserTabs = new ArrayList<String>(driver.getWindowHandles());
+        ArrayList<String> getBrowserTabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(getBrowserTabs.get(1));
         XtbDemoAccountPage expectedResultsOfMarketAnalys = chooseHowToLogInSwitchToSecondWindowHandle
                 .enterLogIn("simakovich_vlad228@mail.ru")
@@ -42,7 +42,6 @@ public class WebDriverSeleniumTest {
         float expectedMaxDevidentValueSortResult = expectedResultsOfMarketAnalys
                 .sortValueByDevidendYield()
                 .getFirstDevidendYiledAfterSort();
-
         Assert.assertTrue(expectedMaxDevidentValueSortResult >= 2.49 && expectedMinDevidendValueSortResult >= 2.49);
     }
 
@@ -50,9 +49,5 @@ public class WebDriverSeleniumTest {
     public void browserTearDown() {
         driver.quit();
         driver = null;
-    }
-
-    public static void fail(String failMessage) {
-        throw new AssertionError(failMessage);
     }
 }

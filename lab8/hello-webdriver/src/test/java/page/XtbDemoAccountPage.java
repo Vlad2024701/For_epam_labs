@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static waits.ExpicitWaiter.waitForElementLocatedBy;
 
@@ -17,18 +18,18 @@ public class XtbDemoAccountPage {
 
     private WebDriver driver;
 
-    @FindBy(xpath = "//*[text()='Анализ рынка']/parent::li")
-    private WebElement TabMarketAnalysis;
+    @FindBy(xpath = "//*[@class='xs-tab-header xs-tab-header-text']/parent::li")
+    private List<WebElement> tabAnalysis;
     @FindBy(xpath = "//*[@class='xs-slider-range-values-box']/span[2]")
-    private WebElement ValueOfMarketCapitalizationMax;
+    private WebElement valueOfMarketCapitalizationMax;
     @FindBy(xpath = "//div[@label='SCREENER.MARKET_CAPITALISATION']//input[@name ='stepperInput']")
     private WebElement areaValueOfMarketCapitalizationMax;
     @FindBy(xpath = "//div[@label='SCREENER.DIVIDED_YIELD']//span[@class='xs-slider-range-min']")
-    private WebElement ValueOfDevidentAbilityMin;
+    private WebElement valueOfDevidentAbilityMin;
     @FindBy(xpath = "//div[@label='SCREENER.DIVIDED_YIELD']//div[@class='xs-slider-range-min-stepper']//input")
     private WebElement areaValueOfDevidentAbilityMin;
-    @FindBy(xpath = "//span[text()='ДИВИДЕНДНАЯ ДОХОДНОСТЬ']/parent::div")
-    private WebElement sortValueByDevidence;
+    @FindBy(xpath = "//span[@class ='slick-column-name']/parent::div")
+    private List<WebElement> sortValueByDevidence;
 
     public XtbDemoAccountPage(WebDriver driver){
         this.driver = driver;
@@ -36,8 +37,8 @@ public class XtbDemoAccountPage {
     }
 
     public XtbDemoAccountPage pressTabMarketAnalysis(){
-        waitForElementLocatedBy(driver, By.xpath("//*[text()='Анализ рынка']/parent::li"));
-        TabMarketAnalysis.click();
+        waitForElementLocatedBy(driver, By.xpath("//*[@class='xs-tab-header xs-tab-header-text']/parent::li"));
+        tabAnalysis.get(3).click();
         return this;
     }
 
@@ -46,7 +47,7 @@ public class XtbDemoAccountPage {
         new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.elementToBeClickable(By.
                         xpath("//*[@class='xs-slider-range-values-box']/span[2]")));
-        ValueOfMarketCapitalizationMax.click();
+        valueOfMarketCapitalizationMax.click();
         areaValueOfMarketCapitalizationMax.clear();
         areaValueOfMarketCapitalizationMax.sendKeys(text);
         areaValueOfMarketCapitalizationMax.sendKeys(Keys.ENTER);
@@ -55,7 +56,7 @@ public class XtbDemoAccountPage {
 
     public XtbDemoAccountPage inputValueOfDevidentAbilityMin(String text){
         waitForElementLocatedBy(driver,By.xpath("//div[@label='SCREENER.DIVIDED_YIELD']//span[@class='xs-slider-range-min']"));
-        ValueOfDevidentAbilityMin.click();
+        valueOfDevidentAbilityMin.click();
         areaValueOfDevidentAbilityMin.clear();
         areaValueOfDevidentAbilityMin.sendKeys(text);
         areaValueOfDevidentAbilityMin.sendKeys(Keys.ENTER);
@@ -63,8 +64,8 @@ public class XtbDemoAccountPage {
     }
 
     public XtbDemoAccountPage sortValueByDevidendYield(){
-        waitForElementLocatedBy(driver, By.xpath("//span[text()='ДИВИДЕНДНАЯ ДОХОДНОСТЬ']/parent::div"));
-        sortValueByDevidence.click();
+        waitForElementLocatedBy(driver, By.xpath("//span[@class ='slick-column-name']/parent::div"));
+        sortValueByDevidence.get(6).click();
         return this;
     }
 
