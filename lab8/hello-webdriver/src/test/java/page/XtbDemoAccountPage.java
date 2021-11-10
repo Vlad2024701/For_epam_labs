@@ -19,7 +19,7 @@ public class XtbDemoAccountPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//*[@class='xs-tab-header xs-tab-header-text']/parent::li")
-    private List<WebElement> tabAnalysis;
+    private List<WebElement> analisTab;
     @FindBy(xpath = "//*[@class='xs-slider-range-values-box']/span[2]")
     private WebElement valueOfMarketCapitalizationMax;
     @FindBy(xpath = "//div[@label='SCREENER.MARKET_CAPITALISATION']//input[@name ='stepperInput']")
@@ -38,7 +38,7 @@ public class XtbDemoAccountPage {
 
     public XtbDemoAccountPage pressTabMarketAnalysis(){
         waitForElementLocatedBy(driver, By.xpath("//*[@class='xs-tab-header xs-tab-header-text']/parent::li"));
-        tabAnalysis.get(3).click();
+        analisTab.get(3).click();
         return this;
     }
 
