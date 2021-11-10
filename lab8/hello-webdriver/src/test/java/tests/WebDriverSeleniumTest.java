@@ -6,7 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import page.PastebinHomePage;
 import page.XtbDemoAccountPage;
 import page.XtbHomePage;
 import page.XtbLoginPage;
@@ -21,19 +20,6 @@ public class WebDriverSeleniumTest {
     public void browserSetup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-    }
-
-    @Test(description = "Test which create New Paste one pastebin.com with some details")
-    public void commonSearchPageResult() throws InterruptedException {
-        String expectedSearchResult = new PastebinHomePage(driver)
-                .openPage()
-                .addSomeTextForNewPaste("Hello from WebDriver")
-                .changePasteExperationTo10Min()
-                .addSomeTitle("helloweb")
-                .createNewPaste()
-                .resultPageId();
-
-        Assert.assertNotNull(expectedSearchResult);
     }
 
     @Test(description = "Test-case market analis")
@@ -58,7 +44,6 @@ public class WebDriverSeleniumTest {
                 .getFirstDevidendYiledAfterSort();
 
         Assert.assertTrue(expectedMaxDevidentValueSortResult >= 2.49 && expectedMinDevidendValueSortResult >= 2.49);
-        Thread.sleep(5000);
     }
 
     @AfterMethod(alwaysRun = true)
