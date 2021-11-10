@@ -34,6 +34,8 @@ public class XtbHomePage {
 
     public XtbHomePage pressLogInButton(){
         waitForElementLocatedBy(driver, By.xpath("//*[@class='js-login-aa']"));
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='js-login-aa']")));
         buttonLogin.click();
         return this;
     }
