@@ -43,7 +43,7 @@ public class XtbDemoAccountPage {
     }
 
     public XtbDemoAccountPage inputValueOfMarketCapitalizationMax(String text){
-        waitForElementLocatedBy(driver,By.xpath("//*[@class='xs-slider-range-values-box']/span[2]"));
+        waitForElementLocatedBy(driver, By.xpath("//*[@class='xs-slider-range-values-box']/span[2]"));
         new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.elementToBeClickable(By.
                         xpath("//*[@class='xs-slider-range-values-box']/span[2]")));
