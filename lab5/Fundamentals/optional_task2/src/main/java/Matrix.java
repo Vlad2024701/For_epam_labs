@@ -19,7 +19,6 @@ public class Matrix {
             System.out.print("\n");
         }
 
-        //task1
         System.out.printf("Сортировка пузырьком\nВведите номер столбца для сортировки матрицы(в пределах от 1 до %d): k = ", dimensionOfTheMatrix);
         int columnToSort = inputStream.nextInt();
         Arrays.sort(arrayMatrix, (x, y) -> -(y[columnToSort - 1] - x[columnToSort - 1]));
