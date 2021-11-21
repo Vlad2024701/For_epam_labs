@@ -22,9 +22,9 @@ public class Program {
         ActionProduct actionProduct = new ActionProduct(products);
         System.out.println("Получить список товаров для <булочка>:");
         actionProduct.getProductForName("булочка").forEach(System.out::println);
-        System.out.println("Получить список товаров для <булочка> не превосходящих цену в 0.85 BYN:");
+        System.out.println("\nПолучить список товаров для <булочка> не превосходящих цену в 0.85 BYN:");
         actionProduct.getProductForNameAndMaxPrice("булочка", 0.85).forEach(System.out::println);
-        System.out.println("Получить список товаров, где срок хранения не превосходит 20 дней");
+        System.out.println("\nПолучить список товаров, где срок хранения не превосходит 20 дней");
         actionProduct.getProductForMinStorageTime(20).forEach(System.out::println);
     }
 }
